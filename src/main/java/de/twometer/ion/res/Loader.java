@@ -1,5 +1,7 @@
 package de.twometer.ion.res;
 
+import de.twometer.ion.IonException;
+import de.twometer.ion.gl.Texture;
 import de.twometer.ion.mesh.Mesh;
 import de.twometer.ion.mesh.Model;
 import de.twometer.ion.obj.WavefrontParser;
@@ -48,11 +50,11 @@ public class Loader {
 
             return programId;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new IonException(e);
         }
     }
 
-    public static int loadTexture(String path) {
+    public static Texture loadTexture(String path) {
         try {
             BufferedImage image = ResourceLoader.loadImage(path);
             ByteBuffer buffer = loadPixels(image);
@@ -66,9 +68,9 @@ public class Loader {
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
             glBindTexture(GL_TEXTURE_2D, 0);
 
-            return textureId;
+            return new Texture(textureId, image.getWidth(), image.getHeight());
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new IonException(e);
         }
     }
 
@@ -95,7 +97,7 @@ public class Loader {
             mesh.destroy();
             return mdl;
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new IonException(e);
         }
     }
 
