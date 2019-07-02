@@ -89,8 +89,8 @@ public class Loader {
         return buffer;
     }
 
-    public static Model loadObj(String workingDir, String model) {
-        WavefrontParser parser = new WavefrontParser(workingDir, model);
+    public static Model loadObj(String model) {
+        WavefrontParser parser = new WavefrontParser("models/", model);
         try {
             Mesh mesh = parser.createMesh();
             Model mdl = Model.create(mesh, GL_TRIANGLES);

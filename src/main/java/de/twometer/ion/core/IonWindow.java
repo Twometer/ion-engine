@@ -1,5 +1,6 @@
 package de.twometer.ion.core;
 
+import org.joml.Matrix4f;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
 
@@ -10,7 +11,7 @@ import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.GL_TRUE;
 
-class IonWindow {
+public class IonWindow {
 
     private long window;
 
@@ -19,6 +20,8 @@ class IonWindow {
     private int height;
 
     private String title;
+
+    private Matrix4f guiMatrix = new Matrix4f();
 
     void create(int glMajor, int glMinor, int samples) {
         GLFWErrorCallback.createPrint(System.err).set();
@@ -79,8 +82,12 @@ class IonWindow {
     }
 
     void update() {
+        guiMatrix.setOrtho2D(0, getWidth(), getHeight(), 0);
         glfwPollEvents();
         glfwSwapBuffers(window);
     }
 
+    public Matrix4f getGuiMatrix() {
+        return guiMatrix;
+    }
 }

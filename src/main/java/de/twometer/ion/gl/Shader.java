@@ -12,7 +12,7 @@ public abstract class Shader {
 
     private int programId;
 
-    Shader(String name) {
+    public Shader(String name) {
         String vertexPath = "shaders/" + name + VERT_SHADER_EXT;
         String fragmentPath = "shaders/" + name + FRAG_SHADER_EXT;
         programId = Loader.loadShader(vertexPath, fragmentPath);
