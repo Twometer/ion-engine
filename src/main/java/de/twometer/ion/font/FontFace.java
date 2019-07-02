@@ -1,5 +1,6 @@
 package de.twometer.ion.font;
 
+import de.twometer.ion.gl.AssetManager;
 import de.twometer.ion.gl.Texture;
 import de.twometer.ion.res.Loader;
 
@@ -20,7 +21,7 @@ class FontFace {
     }
 
     static FontFace load(String name) throws IOException {
-        Texture texture = Loader.loadTexture(FONTS_DIRECTORY + name + ".png");
+        Texture texture = AssetManager.getTexture(FONTS_DIRECTORY + name + ".png");
         Map<Integer, Glyph> glyphs = FontFileParser.fromFile(FONTS_DIRECTORY + name + ".fnt").parse();
         return new FontFace(texture.getId(), glyphs);
     }
