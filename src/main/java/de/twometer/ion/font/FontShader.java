@@ -14,7 +14,7 @@ public class FontShader extends Shader {
 
     private int color;
 
-    FontShader() {
+    public FontShader() {
         super("font");
     }
 

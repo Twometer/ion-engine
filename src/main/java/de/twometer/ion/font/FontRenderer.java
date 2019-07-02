@@ -3,6 +3,7 @@ package de.twometer.ion.font;
 import de.twometer.ion.core.IonApp;
 import de.twometer.ion.font.geom.MeshBuilder;
 import de.twometer.ion.font.geom.Rectangle;
+import de.twometer.ion.gl.AssetManager;
 import de.twometer.ion.mesh.Model;
 import org.joml.Vector4f;
 
@@ -24,7 +25,7 @@ public class FontRenderer {
 
     public FontRenderer(IonApp app, String fontFace) {
         this.app = app;
-        fontShader = new FontShader();
+        fontShader = AssetManager.getShader(FontShader.class);
         try {
             this.fontFace = FontFace.load(fontFace);
         } catch (IOException e) {
