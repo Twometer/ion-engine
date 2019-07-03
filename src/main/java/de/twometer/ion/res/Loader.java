@@ -74,7 +74,7 @@ public class Loader {
         }
     }
 
-    private static ByteBuffer loadPixels(BufferedImage image) {
+    public static ByteBuffer loadPixels(BufferedImage image) {
         ByteBuffer buffer = BufferUtils.createByteBuffer(image.getWidth() * image.getHeight() * BYTES_PER_PIXEL);
         for (int y = 0; y < image.getHeight(); y++) {
             for (int x = 0; x < image.getWidth(); x++) {

@@ -1,9 +1,17 @@
 package de.twometer.ion.core;
 
+import de.twometer.ion.IonException;
+import de.twometer.ion.res.Loader;
+import de.twometer.ion.res.ResourceLoader;
 import org.joml.Matrix4f;
+import org.joml.Vector2f;
 import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWImage;
 import org.lwjgl.opengl.GL;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.Objects;
 
 import static java.sql.Types.NULL;
@@ -90,4 +98,37 @@ public class IonWindow {
     public Matrix4f getGuiMatrix() {
         return guiMatrix;
     }
+
+    public void setIcon(String resourcePath) {
+        try {
+            BufferedImage image = ResourceLoader.loadImage(resourcePath);
+            ByteBuffer buffer = Loader.loadPixels(image);
+
+            GLFWImage.Buffer icons = GLFWImage.malloc(1);
+            icons.position(0)
+                    .width(image.getWidth())
+                    .height(image.getHeight())
+                    .pixels(buffer);
+            glfwSetWindowIcon(window, icons);
+            icons.free();
+        } catch (IOException e) {
+            throw new IonException(e);
+        }
+    }
+
+    public Vector2f getCursorPosition() {
+        double[] xPos = new double[1];
+        double[] yPos = new double[1];
+        glfwGetCursorPos(window, xPos, yPos);
+        return new Vector2f((float) xPos[0], (float) yPos[0]);
+    }
+
+    public boolean isMouseButtonPressed(int mouseButton) {
+        return glfwGetMouseButton(window, mouseButton) == GLFW_PRESS;
+    }
+
+    public boolean isKeyPressed(int key) {
+        return glfwGetKey(window, key) == GLFW_PRESS;
+    }
+
 }

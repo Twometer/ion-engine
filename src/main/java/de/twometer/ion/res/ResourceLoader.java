@@ -47,7 +47,7 @@ public class ResourceLoader {
      * @return The image
      * @throws IOException Will be thrown if the file does not exist, or the image decoding fails
      */
-    static BufferedImage loadImage(String path) throws IOException {
+    public static BufferedImage loadImage(String path) throws IOException {
         return ImageIO.read(openStream(path));
     }
 
