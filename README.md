@@ -4,7 +4,7 @@ LWJGL Boilerplate Engine
 ## Features
 - Window management
 - Resource management
-- Abstraction layer over textures, shaders, VAOs and VBOs
+- Abstraction layer over textures, shaders, FBOs, VAOs and VBOs
 - Wavefront OBJ parser
 - Font renderer (Signed distance fields)
 

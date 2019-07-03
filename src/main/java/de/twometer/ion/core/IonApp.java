@@ -1,10 +1,13 @@
 package de.twometer.ion.core;
 
 import de.twometer.ion.annotations.Window;
+import de.twometer.ion.util.FboHelper;
 
 public abstract class IonApp {
 
     private IonWindow window = new IonWindow();
+
+    private FboHelper helper = new FboHelper();
 
     public final void launch() {
         onPreInit();
@@ -15,6 +18,7 @@ public abstract class IonApp {
         window.setWidth(annotation.width());
         window.setTitle(annotation.title());
         window.create(annotation.glMajor(), annotation.glMinor(), annotation.samples());
+        helper.initialize();
         onInit();
         while (!window.isCloseRequested()) {
             onDraw();
@@ -38,4 +42,7 @@ public abstract class IonApp {
         return window;
     }
 
+    public FboHelper getHelper() {
+        return helper;
+    }
 }
