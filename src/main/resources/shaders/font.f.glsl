@@ -8,8 +8,8 @@ uniform sampler2D colorTexture;
 
 uniform vec4 color;
 
-const float width = 0.5;
-const float edge = 0.11;
+const float width = 0.45;
+const float edge = 0.10;
 
 void main(void) {
     float distance = 1.0 - texture(colorTexture, textureCoords).a;

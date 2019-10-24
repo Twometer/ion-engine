@@ -1,7 +1,7 @@
 package examples;
 
-import de.twometer.ion.core.IonApp;
 import de.twometer.ion.annotations.Window;
+import de.twometer.ion.core.IonApp;
 import de.twometer.ion.font.Color;
 import de.twometer.ion.font.FontRenderer;
 
@@ -26,7 +26,8 @@ public class TestApp extends IonApp {
 
     @Override
     public void onDraw() {
-        fontRenderer.draw("Hello world!", 10, 10, 1.0f, Color.WHITE);
+        glClear(GL_COLOR_BUFFER_BIT);
+        fontRenderer.draw("Hello world!", 10, 10, 0.8f, Color.WHITE);
     }
 
     @Override

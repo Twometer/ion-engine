@@ -2,7 +2,6 @@ package de.twometer.ion.font;
 
 import de.twometer.ion.gl.AssetManager;
 import de.twometer.ion.gl.Texture;
-import de.twometer.ion.res.Loader;
 
 import java.io.IOException;
 import java.util.Map;

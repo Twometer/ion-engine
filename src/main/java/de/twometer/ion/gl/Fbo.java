@@ -81,9 +81,9 @@ public class Fbo {
     private void initialize(DepthBufferType type) {
         createFrameBuffer();
         createTextureAttachment();
-        if(type == DepthBufferType.DEPTH_RENDER_BUFFER)
+        if (type == DepthBufferType.DEPTH_RENDER_BUFFER)
             createDepthBufferAttachment();
-        else if(type == DepthBufferType.DEPTH_TEXTURE)
+        else if (type == DepthBufferType.DEPTH_TEXTURE)
             createDepthTextureAttachment();
         unbind();
     }
